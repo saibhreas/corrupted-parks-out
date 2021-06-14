@@ -139,152 +139,19 @@
             <div class="col-md-2"></div>
             <div class="card col-md-8">
               <a href="#home" class="btn btn-escape mb-1">exit</a>
-              <div class="row row9">
-              <div class="input-container input-group col-1">
-                <p class="border-bottom">9am</p>
-              </div>
-
-              <div class="input-group col-10 form-group">
-                <textarea
-                  id="text9AM"
-                  class="form-control custom-control"
-                  rows="2"
-                  style="resize: none"
-                  name="9">
-                </textarea>
-
-                <button type="submit" class="btn saveBtn mb-1">Save</button>
-              </div>
-              </div>
-
-              <div class="row row10">
-          <div class="input-group input-container col-1">
-            <p class="border-bottom">10am</p>
-          </div>
-          <div class="input-group col-10 form-group">
-            <textarea
-              id="text10AM"
-              class="form-control custom-control textborder"
-              rows="2"
-              style="resize: none"
-              name="10"
-            ></textarea>
-
-            <button type="submit" class="btn saveBtn mb-1">Save</button>
-          </div>
-              </div>
-
-              <div class="row row11">
-                <div class="input-group col-1">
-                  <p class="border-bottom">11am</p>
-                </div>
-                <div class="input-group col-10 form-group">
-                  <textarea
-                    id="text11AM"
-                    class="form-control custom-control textborder"
-                    rows="2"
-                    style="resize: none"
-                    name="11"
-                  ></textarea>
-                  <button type="submit" class="btn saveBtn mb-1">Save</button>
-                </div>
-              </div>
-
-              <div class="row row12">
-                <div class="input-group col-1">
-                  <p class="border-bottom">12am</p>
-                </div>
-                <div class="input-group col-10 form-group">
-                  <textarea
-                    id="text12AM"
-                    class="form-control custom-control textborder"
-                    rows="2"
-                    style="resize: none"
-                    name="12"
-                  ></textarea>
-                  <button type="submit" class="btn saveBtn mb-1">Save</button>
-                </div>
-              </div>
-
-              <div class="row row13">
-                <div class="input-group col-1">
-                  <p class="border-bottom">1pm</p>
-                </div>
-                <div class="input-group col-10 form-group">
-                  <textarea
-                    id="text1PM"
-                    class="form-control custom-control textborder"
-                    rows="2"
-                    style="resize: none"
-                    name="13"
-                  ></textarea>
-                  <button type="submit" class="btn saveBtn mb-1">Save</button>
-                </div>
-              </div>
-
-              <div class="row row14">
-                <div class="input-group col-1">
-                  <p class="border-bottom">2pm</p>
-                </div>
-                <div class="input-group col-10 form-group">
-                  <textarea
-                    id="text2PM"
-                    class="form-control custom-control textborder"
-                    rows="2"
-                    style="resize: none"
-                    name="14"
-                  ></textarea>
-                  <button type="submit" class="btn saveBtn mb-1">Save</button>
-                </div>
-              </div>
-
-              <div class="row row15">
-                <div class="input-group col-1">
-                  <p class="border-bottom">3pm</p>
-                </div>
-                <div class="input-group col-10 form-group">
-                  <textarea
-                    id="text3PM"
-                    class="form-control custom-control textborder"
-                    rows="2"
-                    style="resize: none"
-                    name="15"
-                  ></textarea>
-                  <button type="submit" class="btn saveBtn mb-1">Save</button>
-                </div>
-              </div>
-
-              <div class="row row16">
-                <div class="input-group col-1">
-                  <p class="border-bottom">4pm</p>
-                </div>
-                <div class="input-group col-10 form-group">
-                  <textarea
-                    id="text4PM"
-                    class="form-control custom-control textborder"
-                    rows="2"
-                    style="resize: none"
-                    name="16"
-                  ></textarea>
-                  <button type="submit" class="btn saveBtn mb-1">Save</button>
-                </div>
-              </div>
-
-              <div class="row row17">
-                <div class="input-group col-1">
-                  <p class="border-bottom">5pm</p>
-                </div>
-                <div class="input-group col-10 form-group">
-                  <textarea
-                    id="text5PM"
-                    class="textborder form-control custom-control"
-                    rows="2"
-                    style="resize: none"
-                    name="17"
-                  ></textarea>
-                  <button type="submit" class="btn saveBtn mb-1">Save</button>
-                </div>
-              </div>
+              <p>Choose hour increments from 6am to 10pm, then add notes for your days activities</p>
+              <button type="submit" class="btn btn-secondary dropdown-toggle" id="day-planner-time" 
+              onclick="localStorage-hours"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="planner-hours">Pick time slot</button>
+            </div>div  
+            <div class="input-group col-10 form-group">
+              <textarea
+                id="text9AM"
+                class="form-control custom-control"
+                rows="2"
+                style="resize: none"
+                name="9">
+              </textarea>
+              <button type="submit" class="btn saveBtn mb-1">Save</button>
             </div>
           </section>
 
@@ -294,9 +161,102 @@
             <div class="col-md-2"></div>
             <div class="card col-md-8">
               <a href="#home" class="btn btn-escape mb-1">exit</a>
-              <h1 class="display-4">Note Taker <span role="img" aria-label="Memo">📝</span></h1>
+              <h1 class="display-4">Trip Log <span role="img" aria-label="Memo">📝</span></h1>
               <h4 class="mt-4">Add or review notes about your Park searches or experiences</h4>
-              <a class="btn btn-primary btn-lg mt-4" href="/notes" role="button">Get Data</a>
+              <section id= "note-searches">
+                <section id ="req-by-park" class="get-by park-name">
+                  <button type="submit" class="btn btn-secondary dropdown-toggle" id="search-by-park" onclick="notesAPICall" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="planner-hours">Search by Park Name</button> 
+                </section>
+                <section id ="req-by-date" class="get-by-visit-date">
+                  <button type="submit" class="btn btn-secondary dropdown-toggle" id="search-by-date" onclick="notesAPICall" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="planner-hours">Search by Visit Date</button>
+                </section>
+              </section>
+              <section id ="new-note-comments"></section>
+                <textarea>
+                  Placeholder for new commments
+                </textarea>
+                  <!-- This div makes api call to notes database  to write new notes to the database
+                    ---hides after call-->
+                <div class="card">
+                  <div class="card-body">
+                    <fieldset class="group" onsubmit="return onSubmitData(event)">
+                      <legend>Log conditons info</legend>
+                      <ul class="checkbox">
+                        <li>
+                          <input type="checkbox" id="winter" value="winter" />
+                          <label for="cb1">Winter</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="spring" value="spring" />
+                          <label for="cb1">Spring</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="summer" value="summer" />
+                          <label for="cb1">Summer</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="fall" value="fall" />
+                          <label for="cb1">fall</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="sunny" value="sunny" />
+                          <label for="cb1">Sunny</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="cloudy" value="cloudy" />
+                          <label for="cb2">Cloudy</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="fog" value="fog" />
+                          <label for="cb3">Fog</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="misty" value="misty" />
+                          <label for="cb4">Misty</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="rain" value="rain" />
+                          <label for="cb4">Rain</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="snow" value="snow" />
+                          <label for="cb4">Snow</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="cold" value=" cold" />
+                          <label for="cb4">Cold</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="cool value="cool" />
+                          <label for="cb4">Cool</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="warm" value="warm" />
+                          <label for="cb4">Warm</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="hot" value="hot" />
+                          <label for="cb4">Hot</label>
+                        </li>
+
+      
+                      </ul>
+                    </fieldset>
+                    <!--not sure its needed<button class="btn btn-block btn-info" onclick="clickSubmit()" id="new-conditions">Submit Form</button> -->
+                    </form>
+                  </div>
+                </div>
+                <div id = "note-park-info" class="row card col-md-6 dark">
+                  <span id="spancontact" style="display: none;">Phone Number :- <span id="spanphoneNumber"></span>
+                    <br>
+                    Email :- <span id="spanEmail"></span>
+                  </span>
+                  <br>
+                  <span id="spanActivity"></span>
+                  <br>
+                  <span id="spanFees"></span>
+                </div>
+              <a class="btn btn-primary btn-lg mt-4" href="/notes" role="button" onclick="notesAPICall">Save Data</a>
             </div>
           </section>
 
