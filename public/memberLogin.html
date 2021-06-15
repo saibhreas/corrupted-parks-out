@@ -43,38 +43,46 @@
                 </h4>
               </div>
             </div>
-
-            <!--Welcome div-->
-            <section id="welcome" class="container row">
+            <section id="member-login" class="container row">
               <div class="col-md-4"></div>
               <div class="card col-md-6">
-                <button
-                  id="home"
-                  href="scaffold6-13.html"
-                  type="escape"
-                  class="btn btn-escape mb-1"
-                >
-                  exit
-                </button>
+                <a href="index.html" class="btn btn-escape mb-1">exit</a>
+                <h2>Welcom Back<span class="member-name"></span></h2>
+                <form class="login">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email-input"
+                      placeholder="Email"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="password-input"
+                      placeholder="Password"
+                    />
+                  </div>
+                  <div
+                    style="display: none"
+                    id="alert"
+                    class="alert alert-danger"
+                    role="alert"
+                  >
+                    <span
+                      class="glyphicon glyphicon-exclamation-sign"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="sr-only">Error:</span>
+                    <span class="msg"></span>
+                  </div>
 
-                <h2>Welcome to Park Out</h2>
-                <p>
-                  <bold>Park Out</bold> offers members a private database to get
-                  information about NJ National Parks and record trip
-                  information.
-                </p>
-                <p>If you are already a member please use the login button.</p>
-                <a href="#member-login" class="btn saveBtn mb-1">Login</a>
-
-                <p>
-                  If you want to become a member please use the sign-up button.
-                </p>
-                <a href="#member-sign-up" class="btn saveBtn mb-1">Sign Up</a>
-                Not interested in the advance features, No problem just click
-                below to take a hike without the fuss!
-                <a href="#where2-go" type="just a park" class="btn saveBtn mb-1"
-                  >Park Out Lean</a
-                >
+                  <button type="submit" class="btn btn-default">Login</button>
+                </form>
               </div>
             </section>
           </div>
