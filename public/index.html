@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Description" content="App that pools up to date data on National Parks in New Jersey" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+
+  <link rel="stylesheet" href="./assets/css/scafStyle.css">
+  <title>Park Out</title>
+</head>
+
+<body>
+  <main id="container0" class="flex">
+    <header class="header">
+      <!-- Background image -->
+      <div class="p-5  header"
+        style="background-image: url('./assets/img/Delgap1.jpg');height: 100vh; background-size: cover;">
+        <div>
+          <div class="d-flex justify-content-left align-items-center h-100">
+            <div >
+              <a id="home"  href="scaffold6-13.html">GO Home Here</a>
+              <h1 class="mb-3">Park Out</h1>
+              <h4 class="mb-3">The place to check out before you head out!</h4>
+            </div>
+          </div>
+
+          <!--Welcome div-->
+          <section id="welcome" class="container row">
+            <div class="col-md-4"></div>
+            <div class="card col-md-6">
+              <button id="home" href="scaffold6-13.html" type="escape" class="btn btn-escape mb-1">exit</button>
+
+              <h2>Welcome to Park Out</h2>
+              <p>
+                <bold>Park Out</bold> offers members a private database to get information about NJ National Parks and record trip information.
+              </p>
+              <p>If you are already a member please use the login button.</p>
+              <a href="#member-login"  class="btn saveBtn mb-1">Login</a>
+              
+              <p>  If you want to become a member please use the sign-up button.
+              </p>
+              <a href="#member-sign-up" class="btn saveBtn mb-1">Sign Up</a>
+              Not interested in the advance features, No problem  just click below to take a hike without the fuss!
+              <a href="#where2-go" type="just a park" class="btn saveBtn mb-1">Park Out Lean</a>
+              
+            </div>
+          </section>
+
+          <!--New Memeber Sign upn div-->
+          <section id="member-sign-up" class="container row">
+            <div class="col-md-4"></div>
+            <div class="card col-md-6">
+              <a href="#home" class="btn btn-escape mb-1">exit</a>
+              <h2>Let's get started</h2>
+              <form class="sign-up" style="border:1px solid #ccc">
+                <div class="container">
+                  <h1>Sign Up</h1>
+                  <p>Please fill in this form to create an account.</p>
+                  <hr>
+              
+                  <label for="name"><b>Name</b></label>
+                  <input id ="name-input" type="text" placeholder="Enter Username" name="username" required>
+                  
+                  <label for="email"><b>Email</b></label>
+                  <input id = "email-input" type="text" placeholder="Enter Email" name="email" required>
+              
+                  <label for="psw"><b>Password</b></label>
+                  <input id ="password-input" type="password" placeholder="Enter Password" name="psw" required>
+              
+                  
+              
+                  
+              
+               
+              
+                  <div class="clearfix">
+                    <button type="button" class="btn-cancel">Cancel</button>
+                    <button type="submit" class="btn">Sign Up</button>
+                  </div>
+                </div>
+              </form>
+              
+            </div>
+          </section>
+          <!--Memeber login div-->
+          <section id="member-login" class="container row">
+            <div class="col-md-4"></div>
+            <div class="card col-md-6">
+              <a href="#home" class="btn btn-escape mb-1">exit</a>
+              <h2>Welcom Back<span class="member-name"></span></h2>
+              
+              <form method="POST" class="login">
+                <div class="container">
+                  <label for="uname"><b>Username</b></label>
+                  <input id ="newUser"type="text" placeholder="Enter Username" name="uname" required>
+
+                  <label for="email"><b>Email</b></label>
+                  <input id ="email-input" type="text" placeholder="Enter Email" name="email" required>
+              
+                  <label for="psw"><b>Password</b></label>
+                  <input id ="password-input" type="password" placeholder="Enter Password" name="psw" required>
+              
+                  <button type="submit" class="btn">Login</button>
+ 
+                </div>
+              
+                <div class="container" style="background-color:#f1f1f1">
+                  <button type="button" class="btn-cancel">Cancel</button>
+                  <span></span>
+                  <div class="container-fluid">
+                    <div class="navbar-header">
+                      <a class="navbar-brand" href="/logout">
+                        Logout <!--should go to script that closes member account requiring login to get back  should clear local memory  -->
+                      </a>
+                    </div>
+                  </div>
+              </form>
+              
+            </div>
+          </section>
+
+
+          <!--Members Choice-->
+          <section id="member-choice1" class="container row">
+            <div class="col-md-4"></div>
+            <div class="card col-md-6">
+              <a href="#home" class="btn btn-escape mb-1">exit</a>
+
+              <h2>What would you like to do?</h2>
+              <p>Retrieive or Add a note about a park
+              </p>
+              <button type="notes" class="btn notes-db mb-1">Notes</button>
+              <p>Look up a new park
+              </p>
+              <button type="park-out" class="btn park-out mb-1">Login</button>
+              <p>Schedule your park activities</p>  
+              <button type="day-planner" class="btn day-planner-db mb-1">Planner</button>        
+            </div>
+          </section>
+
+          <!-- Temporary members day planner-->
+          <section id="day-planner" class="container text-right planner-div">
+            <div class="col-md-2"></div>
+            <div class="card col-md-8">
+              <a href="#home" class="btn btn-escape mb-1">exit</a>
+              <p>Choose hour increments from 6am to 10pm, then add notes for your days activities</p>
+              <button type="submit" class="btn btn-secondary dropdown-toggle" id="day-planner-time" 
+              onclick="localStorage-hours"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="planner-hours">Pick time slot</button>
+            </div>div  
+            <div class="input-group col-10 form-group">
+              <textarea
+                id="text9AM"
+                class="form-control custom-control"
+                rows="2"
+                style="resize: none"
+                name="9">
+              </textarea>
+              <button type="submit" class="btn saveBtn mb-1">Save</button>
+            </div>
+          </section>
+
+           <!--Temporary members Notes
+          This will have more interaction with DB and should be set up with nested columns (nested grid) so data is user friendly and coordinates with Database-->
+          <section id = "notes" class="container text-right planner-div">
+            <div class="col-md-2"></div>
+            <div class="card col-md-8">
+              <a href="#home" class="btn btn-escape mb-1">exit</a>
+              <h1 class="display-4">Trip Log <span role="img" aria-label="Memo">📝</span></h1>
+              <h4 class="mt-4">Add or review notes about your Park searches or experiences</h4>
+              <section id= "note-searches">
+                <section id ="req-by-park" class="get-by park-name">
+                  <button type="submit" class="btn btn-secondary dropdown-toggle" id="search-by-park" onclick="notesAPICall" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="planner-hours">Search by Park Name</button> 
+                </section>
+                <section id ="req-by-date" class="get-by-visit-date">
+                  <button type="submit" class="btn btn-secondary dropdown-toggle" id="search-by-date" onclick="notesAPICall" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="planner-hours">Search by Visit Date</button>
+                </section>
+              </section>
+              <section id ="new-note-comments"></section>
+                <textarea>
+                  Placeholder for new commments
+                </textarea>
+                  <!-- This div makes api call to notes database  to write new notes to the database
+                    ---hides after call-->
+                <div class="card">
+                  <div class="card-body">
+                    <fieldset class="group" onsubmit="return onSubmitData(event)">
+                      <legend>Log conditons info</legend>
+                      <ul class="checkbox">
+                        <li>
+                          <input type="checkbox" id="winter" value="winter" />
+                          <label for="cb1">Winter</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="spring" value="spring" />
+                          <label for="cb1">Spring</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="summer" value="summer" />
+                          <label for="cb1">Summer</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="fall" value="fall" />
+                          <label for="cb1">fall</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="sunny" value="sunny" />
+                          <label for="cb1">Sunny</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="cloudy" value="cloudy" />
+                          <label for="cb2">Cloudy</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="fog" value="fog" />
+                          <label for="cb3">Fog</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="misty" value="misty" />
+                          <label for="cb4">Misty</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="rain" value="rain" />
+                          <label for="cb4">Rain</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="snow" value="snow" />
+                          <label for="cb4">Snow</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="cold" value=" cold" />
+                          <label for="cb4">Cold</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="cool value="cool" />
+                          <label for="cb4">Cool</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="warm" value="warm" />
+                          <label for="cb4">Warm</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="hot" value="hot" />
+                          <label for="cb4">Hot</label>
+                        </li>
+
+      
+                      </ul>
+                    </fieldset>
+                    <!--not sure its needed<button class="btn btn-block btn-info" onclick="clickSubmit()" id="new-conditions">Submit Form</button> -->
+                    </form>
+                  </div>
+                </div>
+                <div id = "note-park-info" class="row card col-md-6 dark">
+                  <span id="spancontact" style="display: none;">Phone Number :- <span id="spanphoneNumber"></span>
+                    <br>
+                    Email :- <span id="spanEmail"></span>
+                  </span>
+                  <br>
+                  <span id="spanActivity"></span>
+                  <br>
+                  <span id="spanFees"></span>
+                </div>
+              <a class="btn btn-primary btn-lg mt-4" href="/notes" role="button" onclick="notesAPICall">Save Data</a>
+            </div>
+          </section>
+
+            <!--Original park out app-->
+          <section id="where2-go" class="container row">
+            <div class="col-md-4"></div>
+            <div class="card col-md-6">
+              <a href="#home"  class="btn btn-escape mb-1">exit</a>
+
+              <h2>Where would you like to go?</h2>
+              <p>
+                <bold>Park Out</bold> will help you pick the right spot in New Jersey for your walk in the park.
+              </p>
+              <p>Choose from the drop down menu the park you are interseted in.
+              </p>
+              <p>Then choose what information you need, like the current weather, admission information, or if there are activities conducted by the park.
+              </p>
+              <h3><em>Then Take a Hike!</em></h3>
+              <h5 class="card-title">New Jersey’s Parks</h5>
+              <p class="card-text">Choose a park from the drop down menu</p>
+              <button type="submit" class="btn btn-secondary ropdown-toggle" id="search-park" onclick="npsApiCall('NJ')"          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="get-park-names">Pick a NJ Park</button>
+              <div class="dropdown-menu" id="myList" aria-labelledby="dropdownMenuButton">
+              </div>
+            </div>
+          </section>
+
+  
+               <!--Check Box   user choice-->
+          <section id="park-info-requests" class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <a href="#home" class="btn btn-escape mb-1">exit</a>
+              <fieldset class="group" onsubmit="return onSubmitData(event)">
+                <legend>What information can we help you with?</legend>
+                <ul class="checkbox">
+                  <li>
+                    <input type="checkbox" id="admission" value="admisson" />
+                    <label for="cb1">Admission</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="activities" value="activities" />
+                    <label for="cb2">Activities</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="fees" value="fees" />
+                    <label for="cb3">Fees</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="weather" value="weather" />
+                    <label for="cb4">Weather</label>
+                  </li>
+
+                </ul>
+              </fieldset>
+              <button class="btn btn-block btn-info" onclick="clickSubmit()" id="hide-weather">Submit Form</button>
+              </form>
+            </div>
+          </div>
+          </section>
+
+                <!--     container for Park Info -->
+          <section id="weather-info" class="container">
+            <div class="row card col-md-6 dark">
+              <a href="#home" class="btn btn-escape mb-1">exit</a>
+              <span id="spancontact" style="display: none;">Phone Number :- <span id="spanphoneNumber"></span>
+                <br>
+                Email :- <span id="spanEmail"></span>
+              </span>
+              <br>
+              <span id="spanActivity"></span>
+              <br>
+              <span id="spanFees"></span>
+            </div>
+      
+      
+            <!--Container for Weather Info-->
+            <div class="row card col-md-6 dark">
+              <div data-index="0" id="current-weather-container">
+                <div id="map"></div>
+              </div>
+            </div>
+          </section>
+            <!--container for maps-->
+          <section id = "maps" class="container text-right planner-div">
+            <div class="col-md-2"></div>
+            <div class="card col-md-8">
+                  <a href="#home" class="btn btn-escape mb-1">exit</a>
+                  <h1 class="display-4">Place for MAPS to go </h1>
+            </div>
+          </section>
+        </div>
+      </div>
+    </header>
+
+ 
+
+
+
+
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.js"></script>
+  
+</body>
+
+</html> <!-- -->

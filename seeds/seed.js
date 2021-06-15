@@ -1,5 +1,5 @@
 const sequelize = require("../config/connection");
-const { User, Park, Note } = require("../models");
+const { User, Park, Note, Log } = require("../models");
 const userSeedData = require("./userSeedData.json");
 const parkSeedData = require("./parkSeedData.json");
 
@@ -13,6 +13,13 @@ const seedDatabase = async () => {
   for (const park of parkSeedData) {
     const newPark = await Park.create({
       ...park,
+      user_id: users[Math.floor(Math.random() * users.length)].id,
+    });
+  }
+
+  for (const user of userSeedData) {
+    const newUSer = await User.create({
+      ...user,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }
