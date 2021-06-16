@@ -1,7 +1,7 @@
 # Park out work flow
 
 ## **Once logged in as member, validation should be checked between pages using email
-  inside program throw error and send back to index
+  inside program throw error and send back to index  Bcrypt
 
 ## Welcome page
 
@@ -78,7 +78,7 @@
 ### Trip Log
   * ./public/planner.html
     1 Routes/  Multiple
-      1 API search (primary key) 
+      1 API get (primary key)  from id ="req-by-park"
         where saved parks
         join with <div id = "canned-data"
         join with 
@@ -86,3 +86,7 @@
                           <textarea>
                             Placeholder for new commments
                           </textarea>
+
+      1 API get (primary key) from id 
+      id="search-by-date"
+        where  ? saved notes

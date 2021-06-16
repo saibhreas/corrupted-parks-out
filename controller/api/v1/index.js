@@ -1,8 +1,9 @@
 const axios = require('axios').default;
 const router = require('express').Router();
 
+
 const authRoute= require ("./userAuth");
 
-router.use('/auth',authRoute);
+router.use('/user',authRoute);
 
 //router.use('/',  file name);
