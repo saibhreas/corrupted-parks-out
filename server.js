@@ -3,6 +3,7 @@ const express = require("express");
 const session = require("express-session");
 const sequelize = require("./config/connection");
 const routes = require("./controller");
+const axios = require('axios').default;
 
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
