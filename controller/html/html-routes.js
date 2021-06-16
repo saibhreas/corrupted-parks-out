@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const path = require("path");
-const isAuthenticated = require("../../../config/middleware/isAuthenticated");
+const isAuthenticated = require("../../config/middleware/isAuthenticated");
 
 // GET all galleries for homepage
 router.get("/", (req, res) => {
