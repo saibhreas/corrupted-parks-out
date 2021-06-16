@@ -31,10 +31,9 @@
             background-image: url('./assets/img/Delgap1.jpg');
             height: 100vh;
             background-size: cover;">
-                    <section id = "notes" class="container text-right planner-div">
+                    <section id = "notes" class="container text-left planner-div">
                       <div class="col-md-2"></div>
                       <div class="card col-md-8">
-                        <a href="#home" class="btn btn-escape mb-1">exit</a>
                         <h1 class="display-4">Trip Log <span role="img" aria-label="Memo">📝</span></h1>
                         <h4 class="mt-4">Add or review notes about your Park searches or experiences</h4>
                         <section id= "note-searches">
@@ -52,69 +51,66 @@
                             <!-- This div makes api call to notes database  to write new notes to the database
                               ---hides after call-->
                           <div class="card">
-                            <div class="card-body">
+                            <div id = "canned-data" class="card-body">
                               <fieldset class="group" onsubmit="return onSubmitData(event)">
-                                <legend>Log conditons info</legend>
-                                <ul class="checkbox">
-                                  <li>
+                                <legend>Season</legend>
                                     <input type="checkbox" id="winter" value="winter" />
                                     <label for="cb1">Winter</label>
-                                  </li>
-                                  <li>
+                                  
                                     <input type="checkbox" id="spring" value="spring" />
                                     <label for="cb1">Spring</label>
-                                  </li>
-                                  <li>
+                                 
                                     <input type="checkbox" id="summer" value="summer" />
                                     <label for="cb1">Summer</label>
-                                  </li>
-                                  <li>
+                                 
                                     <input type="checkbox" id="fall" value="fall" />
                                     <label for="cb1">fall</label>
-                                  </li>
-                                  <li>
+                                  <br>
+                                 
+                                <legend>Visability</legend>
                                     <input type="checkbox" id="sunny" value="sunny" />
                                     <label for="cb1">Sunny</label>
-                                  </li>
-                                  <li>
+                                  
                                     <input type="checkbox" id="cloudy" value="cloudy" />
                                     <label for="cb2">Cloudy</label>
-                                  </li>
-                                  <li>
+
+                                    <input type="checkbox" id="clear" value="clear" />
+                                    <label for="cb2">Clear</label>
+                                 
                                     <input type="checkbox" id="fog" value="fog" />
                                     <label for="cb3">Fog</label>
-                                  </li>
-                                  <li>
+                                  <br>
+                               
+                                <legend>Percipatation</legend>
                                     <input type="checkbox" id="misty" value="misty" />
                                     <label for="cb4">Misty</label>
-                                  </li>
-                                  <li>
+                                  
                                     <input type="checkbox" id="rain" value="rain" />
                                     <label for="cb4">Rain</label>
-                                  </li>
-                                  <li>
+                                  
                                     <input type="checkbox" id="snow" value="snow" />
                                     <label for="cb4">Snow</label>
-                                  </li>
-                                  <li>
+                                    
+                                    <input type="checkbox" id="sleet" value="sleet" />
+                                    <label for="cb4">Sleet</label>
+                                  <br>
+
+                                <legend>Temperature</legend>
                                     <input type="checkbox" id="cold" value=" cold" />
                                     <label for="cb4">Cold</label>
-                                  </li>
-                                  <li>
+                                  
                                     <input type="checkbox" id="cool value="cool" />
                                     <label for="cb4">Cool</label>
-                                  </li>
-                                  <li>
+                                  
                                     <input type="checkbox" id="warm" value="warm" />
                                     <label for="cb4">Warm</label>
-                                  </li>
-                                  <li>
+                                  
                                     <input type="checkbox" id="hot" value="hot" />
                                     <label for="cb4">Hot</label>
-                                  </li>
+                                 
           
                 
-                                </ul>
+                               
                               </fieldset>
                               <!--not sure its needed<button class="btn btn-block btn-info" onclick="clickSubmit()" id="new-conditions">Submit Form</button> -->
                               </form>
