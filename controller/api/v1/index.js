@@ -7,3 +7,4 @@ const authRoute= require ("./userAuth");
 router.use('/user',authRoute);
 
 //router.use('/',  file name);
+module.exports= router;
