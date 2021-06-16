@@ -36,7 +36,7 @@
           <div>
             <div class="d-flex justify-content-left align-items-center h-100">
               <div>
-                <a id="home" href="index.html">GO Home Here</a>
+                <a href="index.html">GO Home Here</a>
                 <h1 class="mb-3">Park Out</h1>
                 <h4 class="mb-3">
                   The place to check out before you head out!
@@ -44,54 +44,35 @@
               </div>
             </div>
           </div>
-          <!-------------------------------------------------------------------------------------
-              -->
-          <section id="member-login" class="container row">
-            <div class="col-md-4"></div>
-            <div class="card col-md-6">
-              <h1>Welcom Back<span class="member-name"></span></h1>
-              <form class="login">
-                <h2>Login Form</h2>
-                <form class="login">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="email-input"
-                      placeholder="Email"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="password-input"
-                      placeholder="Password"
-                    />
-                  </div>
-                  <div
-                    style="display: none"
-                    id="alert"
-                    class="alert alert-danger"
-                    role="alert"
-                  >
-                    <span
-                      class="glyphicon glyphicon-exclamation-sign"
-                      aria-hidden="true"
-                    ></span>
-                    <span class="sr-only">Error:</span>
-                    <span class="msg"></span>
-                  </div>
+          <!----------------------------------------------------->
+          <section id="park-info-requests" class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <a href="index.html" class="btn btn-escape mb-1">exit</a>
+                <fieldset class="group" onsubmit="return onSubmitData(event)">
+                  <legend>What information can we help you with?</legend>
+                  <form class="checkbox">
+                    <input type="checkbox" id="contact" value="contact" />
+                    <label for="cb1">Contact #</label>
 
-                  <button type="submit" class="btn btn-default">Login</button>
+                    <input type="checkbox" id="admission" value="admisson" />
+                    <label for="cb1">Admission</label>
+                    
+                    <input type="checkbox" id="activities" value="activities" />
+                    <label for="cb2">Activities</label>
+                    
+                    <input type="checkbox" id="fees" value="fees" />
+                    <label for="cb3">Fees</label>
+                    
+                    <input type="checkbox" id="weather" value="weather" />
+                    <label for="cb4">Weather</label>
+                  </form>
+                </fieldset>
+                <button class="btn btn-block btn-info" onclick="clickSubmit()" id="hide-weather">Submit Form</button>
                 </form>
-                <br />
-                <p>Or sign up <a href="signUp.html">here</a></p>
-              </form>
+              </div>
             </div>
-          </section>
+            </section>
 
           <!------------------------------------------------------------------------------------------->
         </div>
