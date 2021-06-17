@@ -2,33 +2,48 @@ const express = require("express");
 const router = express.Router();
 const db = require("../../../models");
 const passport = require("../../../config/passport");
+const { ValidationError } = require("sequelize");
 
-console.log ("This has been called");
 
+// [POST] /api/v1/auth/signup
 router.post("/signup", function (req, res) {
-  console.log("POST /api/v1/auth/signup");
-  db.User.findOne({ email: req.body.email }, (err, user) => {
-    if (err) {
-      console.log(err);
-    } else if (user) {
-      res.json({ msg: "This user already has an account!" });
-    } else {
-      db.User.create(req.body).then(function () {
-        res.redirect(307, "/login"); //redirect to log in to be authenticated
-      });
-    }
-  });
+  db.User.findOne({ where: { email: req.body.email } })
+    .then((user) => {
+      if (user) {
+        // If user exists, throw error.
+        res.status(500).json({ message: "This user already has an account!" });
+      } else {
+        // Create new user
+        db.User.create(req.body)
+          .then(() => {
+            // Redirect to log in to be authenticated
+            console.log(`res.redirect("/login")`);
+            res.redirect("/login");
+          }).catch(err => {
+            if (err instanceof ValidationError) {
+              // If error is for validation, then show just message
+              res.status(500).json({ message: err.message });
+            } else {
+              res.status(500).json({ message: err });
+            }
+          });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: err });
+    });
 });
 
-router.post("/login",/* passport.authenticate("local"),*/ function (req, res) {
-  console.log("POST /api/v1/auth/login");
-
+// [POST] /api/v1/auth/login
+router.post("/login", passport.authenticate("local"), (req, res) => {
+  console.log('/login', req.user);
   res.json(req.user);
 });
 
+// [GET] /api/v1/auth/logout
 router.get("/logout", function (req, res) {
-  console.log("POST /api/v1/auth/logout");
   req.logout();
   res.sendStatus(200);
 });
+
 module.exports = router;
