@@ -2,7 +2,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -17,7 +17,7 @@ module.exports = function(app) {
         title: "This is the title for this post",
         body: "This is the body of this post"
       });
-      console.log("result", result.get({ plain:true }));
+      console.log("result", result.get({ plain: true }));
 
       const result2 = await db.Favorite.create({
         // Case sensitive for 'UserId' foreign key
@@ -25,11 +25,11 @@ module.exports = function(app) {
         title: "This is the title for this favorite",
         body: "This is the body of this favorite"
       });
-      console.log("result2", result2.get({ plain:true }));
+      console.log("result2", result2.get({ plain: true }));
 
       res.json({
         email: req.user.email,
-        id: req.user.id, 
+        id: req.user.id,
         name: req.user.name
       });
     } catch (err) {
