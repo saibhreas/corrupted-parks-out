@@ -42,6 +42,7 @@ function getFiveDayWeatherApi(lat, lon) {
       console.log("object extracted: ", response);
       console.log(response.daily[0].dt);
       //for (var i = 0; i < 6; i++) {
+     
       var i = 0;
       var weather = response.daily[i].weather[0].description;
       var icon = response.daily[i].weather[0].icon;
@@ -101,6 +102,7 @@ function clickSubmit() {
   if ($("#weather").is(":checked")) {
     getFiveDayWeatherApi(lat, lon);
   }
+  
 }
 $("#hide-weather").click(function () {
   $("#current-weather-container").empty();
@@ -150,16 +152,22 @@ function npsApiCall(parkNJ) {
             nameP +
             "</a>"
         );
+        
       }
+      
     },
+    
     error: function (xhr, status, error) {
       console.log("status: ", status);
       console.log("error: ", error);
     },
     complete: function (xhr, status) {
       console.log("complete: ", status);
+       
     },
+    
   });
+  
 };
 $(document).ready(function () {
   $("#container1").show();
@@ -193,4 +201,5 @@ $(document).ready(function () {
     $("#container5").hide("slow");
   });
 });
+
 setInterval(displayTime, 1000);
