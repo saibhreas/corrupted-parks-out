@@ -1,13 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../../../models");
-<<<<<<< HEAD
-const passport = require("./config/passport");
-=======
 const passport = require("../../../config/passport");
 
 console.log ("This has been called");
->>>>>>> 030df0286de62f5a891c27b9adce282704a12ad9
 
 router.post("/signup", function (req, res) {
   console.log("POST /api/v1/auth/signup");

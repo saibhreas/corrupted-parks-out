@@ -9,13 +9,19 @@ Park.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    park_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    phone_number: {
+    park_phone_number: {
+      type: DataTypes.INTEGER,
+    },
+    park_activities: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+    },
+    park_fees: {
+      type: DataTypes.INTEGER,
     },
     user_id: {
       type: DataTypes.INTEGER,

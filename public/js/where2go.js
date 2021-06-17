@@ -42,7 +42,6 @@ function getFiveDayWeatherApi(lat, lon) {
       console.log("object extracted: ", response);
       console.log(response.daily[0].dt);
       //for (var i = 0; i < 6; i++) {
-      window.location.href = "./weather.html";
       var i = 0;
       var weather = response.daily[i].weather[0].description;
       var icon = response.daily[i].weather[0].icon;
@@ -102,7 +101,6 @@ function clickSubmit() {
   if ($("#weather").is(":checked")) {
     getFiveDayWeatherApi(lat, lon);
   }
-  window.location.href = "./whatInfo.html";
 }
 $("#hide-weather").click(function () {
   $("#current-weather-container").empty();
@@ -146,7 +144,7 @@ function npsApiCall(parkNJ) {
         sessionStorage.removeItem(i.toString());
         sessionStorage.setItem(i.toString(), JSON.stringify(response.data[i]));
         $("#myList").append(
-          "<a class='dropdown-item' href='./whatInfo.html' onclick='getAnswer(event," +
+          "<a class='dropdown-item' href='dataResult.html' onclick='getAnswer(event," +
             i.toString() +
             ")'>" +
             nameP +
@@ -160,11 +158,8 @@ function npsApiCall(parkNJ) {
     },
     complete: function (xhr, status) {
       console.log("complete: ", status);
-      
     },
   });
-  window.location.href = "./whatInfo.html";
-  console.log ("should have hit the change")
 };
 $(document).ready(function () {
   $("#container1").show();
@@ -182,7 +177,6 @@ $(document).ready(function () {
     $("#container2").hide("slow");
     $("#container3").hide("slow");
     $("#container4").show();
-
   });
   $("#home").click(function () {
     $("#container1").show();
@@ -190,9 +184,7 @@ $(document).ready(function () {
     $("#container3").hide("slow");
     $("#container4").hide("slow");
     $("#container5").hide("slow");
-     
   });
-
   $("#getNewPark").click(function () {
     $("#container1").hide("slow");
     $("#container2").hide("slow");
