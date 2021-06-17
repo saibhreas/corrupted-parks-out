@@ -1,14 +1,13 @@
 // This is middleware for restricting routes a user is not allowed to visit if not logged in
-console.log("isAuthenticated")
 
-module.exports = function(req, res, next) {
-  console.log("This is the request value "+ req);
+module.exports = function (req, res, next) {
+  console.log("isAuth");
   // If the user is logged in, continue with the request to the restricted route
   if (req.user) {
     return next();
   }
 
   // If the user isn't logged in, redirect them to the login page
-  return res.redirect("../public/memberLogin");//landing page
-  
+  return res.redirect("/login"); // landing page
+
 };

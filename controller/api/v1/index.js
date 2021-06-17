@@ -1,10 +1,7 @@
-const axios = require('axios').default;
 const router = require('express').Router();
+const authRoute = require("./userAuth");
 
+// Routes for [/api/v1/auth/]
+router.use('/auth', authRoute);
 
-const authRoute= require ("./userAuth");
-
-router.use('/user',authRoute);
-
-//router.use('/',  file name);
-module.exports= router;
+module.exports = router;

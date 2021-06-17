@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-class Park extends Model {}
+class Park extends Model { }
 Park.init(
   {
     id: {
@@ -9,18 +9,18 @@ Park.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    park_name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    park_phone_number: {
+    phone_number: {
       type: DataTypes.INTEGER,
     },
-    park_activities: {
+    activities: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    park_fees: {
+    fees: {
       type: DataTypes.INTEGER,
     },
     user_id: {
