@@ -18,7 +18,7 @@ const seedDatabase = async () => {
   }
 
   for (const user of userSeedData) {
-    const newUSer = await User.create({
+    const newUser = await User.create({
       ...user,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });

@@ -185,7 +185,6 @@ $(document).ready(function () {
     $("#container2").hide("slow");
     $("#container3").hide("slow");
     $("#container4").show();
-
   });
   $("#home").click(function () {
     $("#container1").show();
@@ -193,9 +192,7 @@ $(document).ready(function () {
     $("#container3").hide("slow");
     $("#container4").hide("slow");
     $("#container5").hide("slow");
-     
   });
-
   $("#getNewPark").click(function () {
     $("#container1").hide("slow");
     $("#container2").hide("slow");
