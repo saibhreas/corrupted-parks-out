@@ -9,6 +9,7 @@ console.log("ready");
 var MAPQ_API_KEY = "yQcB9Koy5KFxIcWM6GPCjCJ132aiYGhh";
 var getParkBtnEl = $("#get-park-names");
 var timeDispEl = $("#time-display");
+var appendDiv = document.querySelector('.appending-div');
 var apiKey = "653094733b20fc02dc6f1e6e6b8bf37e";
 // *! COMPLETED time display function
 function displayTime() {
@@ -32,18 +33,12 @@ function mapQuestApiCall(x, y) {
 }
 //*! Weather Information
 function getFiveDayWeatherApi(lat, lon) {
-  var city = $("#city-name").val();
-  console.log("current searched was: ", city);
   var fiveDayUrlApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely,current,alerts&units=imperial&appid=${apiKey}`;
   console.log("fivedayURL: ", fiveDayUrlApi);
   $.ajax({
     url: fiveDayUrlApi,
     success: function (response) {
       console.log("object extracted: ", response);
-      console.log(response.daily[0].dt);
-      //for (var i = 0; i < 6; i++) {
-     
-      var i = 0;
       var weather = response.daily[i].weather[0].description;
       var icon = response.daily[i].weather[0].icon;
       var temp = response.daily[i].temp.day;
@@ -52,9 +47,8 @@ function getFiveDayWeatherApi(lat, lon) {
         "src",
         `http://openweathermap.org/img/wn/${icon}@2x.png`
       );
-      console.log(iconImage);
-      console.log(response.daily[i].temp.day);
-      console.log("div" + '[data-index="' + i + '"]');
+
+      console.log(`the daily temp is ${temp}`);
       $("div" + '[data-index="' + i + '"]').append(
         " weather: " + weather,
         iconImage,
@@ -72,7 +66,6 @@ function getFiveDayWeatherApi(lat, lon) {
       };
       //*! Must store value entered by userinput to user storage
       localStorage.setItem(city + " day-" + i, JSON.stringify(storeObj));
-      //};
     },
     error: function (xhr, status, error) {
       console.log("status: ", status);
@@ -128,7 +121,7 @@ function getAnswer(e, pIndex) {
   $("#spanActivity").text("");
   $("#spanFees").text("");
   $("#divInformation").hide();
-}
+};
 // Fetching Data from NPS API
 function npsApiCall(parkNJ) {
   var npsKey = "aKdQbl5YRDOdOcAzaiDfbacSBby5NQWEU8s5Mi5D";
