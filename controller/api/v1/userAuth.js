@@ -7,7 +7,8 @@ const { ValidationError } = require("sequelize");
 
 // [POST] /api/v1/auth/signup
 router.post("/signup", function (req, res) {
-  db.User.findOne({ where: { email: req.body.email } })
+  console.log('POST /api/v1/auth/signup')
+  db.User.findOne({ where: { user_email: req.body.user_email } })
     .then((user) => {
       if (user) {
         // If user exists, throw error.
@@ -17,8 +18,10 @@ router.post("/signup", function (req, res) {
         db.User.create(req.body)
           .then(() => {
             // Redirect to log in to be authenticated
-            console.log(`res.redirect("/login")`);
-            res.redirect("/login");
+            console.log(`redirected to api: /api/v1/auth/login `);
+            res.redirect(307, "/api/v1/auth/login");
+            // 307 means when you receive it send it back to us with 
+            // the same method with is post
           }).catch(err => {
             if (err instanceof ValidationError) {
               // If error is for validation, then show just message
@@ -35,8 +38,9 @@ router.post("/signup", function (req, res) {
 });
 
 // [POST] /api/v1/auth/login
+// auth kicks in, if it is succeeds it'll return the req.user 
 router.post("/login", passport.authenticate("local"), (req, res) => {
-  console.log('/login', req.user);
+  console.log('POST /api/v1/auth/login', req.user);
   res.json(req.user);
 });
 
@@ -44,6 +48,15 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
 router.get("/logout", function (req, res) {
   req.logout();
   res.sendStatus(200);
+});
+
+// *! must issue a get method using the url below to display user name
+// [GET] /api/v1/auth/user_data
+router.get("/user_data", function (req, res) {
+  if (req.user) {
+    res.json(req.user);
+  };
+  res.json({});
 });
 
 module.exports = router;

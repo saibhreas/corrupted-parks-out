@@ -5,8 +5,8 @@ const sequelize = require("../config/connection");
 class User extends Model {
   // set up method to run on instance data (per user) to check password
   checkPassword(loginPw) {
-    console.log('bcypt.comparesync', loginPw, this.pw);
-    return bcrypt.compareSync(loginPw, this.password);
+    console.log('bcypt.comparesync', loginPw, this.user_password);
+    return bcrypt.compareSync(loginPw, this.user_password);
   }
 }
 
@@ -22,7 +22,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
+    user_email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
@@ -30,7 +30,7 @@ User.init(
         isEmail: true,
       },
     },
-    password: {
+    user_password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -42,7 +42,7 @@ User.init(
     hooks: {
       beforeCreate: async (newUser) => {
         try {
-          newUser.password = await bcrypt.hash(newUser.password, 10);
+          newUser.user_password = await bcrypt.hash(newUser.user_password, 10);
           return newUser;
         } catch (err) {
           console.log(err);
@@ -51,7 +51,7 @@ User.init(
       },
       beforeUpdate: async (updatedUser) => {
         try {
-          updatedUser.password = await bcrypt.hash(updatedUser.password, 10);
+          updatedUser.user_password = await bcrypt.hash(updatedUser.user_password, 10);
           return updatedUser;
         } catch (err) {
           console.log(err);

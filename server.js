@@ -15,6 +15,9 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());          
+
+// *! everything in the public folder will use an absolute 
+// *! path which is why you can use /assets
 app.use(express.static("public"));
 // We need to use sessions to keep track of our user's login status
 app.use(

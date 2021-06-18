@@ -41,7 +41,7 @@ function getFiveDayWeatherApi(lat, lon) {
       console.log("object extracted: ", response);
       console.log(response.daily[0].dt);
       //for (var i = 0; i < 6; i++) {
-
+      // set to local storage
       var i = 0;
       var weather = response.daily[i].weather[0].description;
       var icon = response.daily[i].weather[0].icon;
@@ -51,7 +51,6 @@ function getFiveDayWeatherApi(lat, lon) {
         "src",
         `http://openweathermap.org/img/wn/${icon}@2x.png`
       );
-
       console.log(`the daily temp is ${temp}`);
       $("div" + '[data-index="' + i + '"]').append(
         " weather: " + weather,
@@ -62,14 +61,15 @@ function getFiveDayWeatherApi(lat, lon) {
         " uv index: " + uvi
       );
       console.log(uvi);
-      storeObj = {
+      const storeObj = {
         weather: weather,
         icon: icon,
         temp: temp,
         uvi: uvi,
       };
+      console.log("this is the storeobj variable:", storeObj);
       //*! Must store value entered by userinput to user storage
-      localStorage.setItem(city + " day-" + i, JSON.stringify(storeObj));
+      localStorage.setItem('weather', JSON.stringify(storeObj));
     },
     error: function (xhr, status, error) {
       console.log("status: ", status);
@@ -106,6 +106,8 @@ $("#hide-weather").click(function () {
 });
 // Getting Answers from NPS Park API
 function getAnswer(e, pIndex) {
+  console.log('getAnswer e:', e)
+  console.log('getAnswer pIndex or chosen park:', pIndex)
   e.preventDefault();
   var data = JSON.parse(sessionStorage.getItem(pIndex.toString()));
   var contactP = data.contacts;
@@ -115,7 +117,7 @@ function getAnswer(e, pIndex) {
   // Check if we want keep email info
   if (contactP != null && contactP.emailAddresses.length > 0) {
     email = contactP.emailAddresses[0].emailAddresses;
-  }
+  };
   activity = data.activities[0].name;
   fees = data.entranceFees[0].cost;
   lat = data.latitude;
@@ -125,6 +127,10 @@ function getAnswer(e, pIndex) {
   $("#spanActivity").text("");
   $("#spanFees").text("");
   $("#divInformation").hide();
+  console.log("lat:, Lon:", lat, lon);
+  getFiveDayWeatherApi(lat, lon);
+  console.log("redirect to apiLandingPage");
+  location.href="/parkWeather.html";
 };
 // Fetching Data from NPS API
 function npsApiCall(parkNJ) {
@@ -143,24 +149,20 @@ function npsApiCall(parkNJ) {
         sessionStorage.removeItem(i.toString());
         sessionStorage.setItem(i.toString(), JSON.stringify(response.data[i]));
         $("#myList").append(
-          "<a class='dropdown-item' href='dataResult.html' onclick='getAnswer(event," +
+          "<button class='dropdown-item' onclick='getAnswer(event," +
           i.toString() +
           ")'>" +
           nameP +
-          "</a>"
+          "</button>"
         );
-
       }
-
     },
-
     error: function (xhr, status, error) {
       console.log("status: ", status);
       console.log("error: ", error);
     },
     complete: function (xhr, status) {
       console.log("complete: ", status);
-
     },
 
   });

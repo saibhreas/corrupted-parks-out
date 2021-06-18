@@ -30,8 +30,8 @@ $(document).ready(() => {
 
     $.post("/api/v1/auth/signup", {
       user_name: name,
-      email: email,
-      password: password
+      user_email: email,
+      user_password: password
     })
       .then(data => {
         console.log("signUpUser", data);
@@ -39,7 +39,7 @@ $(document).ready(() => {
         nameInput.val("");
         emailInput.val("");
         passwordInput.val("");
-        window.location.replace("/members");
+        window.location.replace("/where2go");
       })
       .catch(err => handleLoginErr(err.responseJSON));
   }

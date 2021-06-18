@@ -33,7 +33,7 @@ $(document).ready(() => {
     })
       .then(data => {
         console.log("loginUser", data);
-        window.location.replace("/members");
+        window.location.replace("/where2go");
         // If there's an error, log the error
       })
       .catch(err => handleLoginErr(err.responseJSON));
