@@ -9,14 +9,14 @@ passport.use(
   new LocalStrategy(
     // Our user will sign in using an email, rather than a "username"
     {
-      usernameField: "email"
+      usernameField: "user_email"
     },
     (email, password, done) => {
       console.log("Password authentication")
       // When a user tries to sign in this code runs
       db.User.findOne({//means we are suing model
         where: {
-          email: email
+          user_email: email
         }
       }).then(dbUser => {
         // If there's no user with the given email

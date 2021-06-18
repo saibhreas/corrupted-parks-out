@@ -9,6 +9,7 @@ console.log("ready");
 var MAPQ_API_KEY = "yQcB9Koy5KFxIcWM6GPCjCJ132aiYGhh";
 var getParkBtnEl = $("#get-park-names");
 var timeDispEl = $("#time-display");
+var appendDiv = document.querySelector('.appending-div');
 var apiKey = "653094733b20fc02dc6f1e6e6b8bf37e";
 // *! COMPLETED time display function
 function displayTime() {
@@ -32,8 +33,6 @@ function mapQuestApiCall(x, y) {
 }
 //*! Weather Information
 function getFiveDayWeatherApi(lat, lon) {
-  var city = $("#city-name").val();
-  console.log("current searched was: ", city);
   var fiveDayUrlApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely,current,alerts&units=imperial&appid=${apiKey}`;
   console.log("fivedayURL: ", fiveDayUrlApi);
   $.ajax({
@@ -42,7 +41,7 @@ function getFiveDayWeatherApi(lat, lon) {
       console.log("object extracted: ", response);
       console.log(response.daily[0].dt);
       //for (var i = 0; i < 6; i++) {
-
+      // set to local storage
       var i = 0;
       var weather = response.daily[i].weather[0].description;
       var icon = response.daily[i].weather[0].icon;
@@ -52,9 +51,7 @@ function getFiveDayWeatherApi(lat, lon) {
         "src",
         `http://openweathermap.org/img/wn/${icon}@2x.png`
       );
-      console.log(iconImage);
-      console.log(response.daily[i].temp.day);
-      console.log("div" + '[data-index="' + i + '"]');
+      console.log(`the daily temp is ${temp}`);
       $("div" + '[data-index="' + i + '"]').append(
         " weather: " + weather,
         iconImage,
@@ -64,15 +61,15 @@ function getFiveDayWeatherApi(lat, lon) {
         " uv index: " + uvi
       );
       console.log(uvi);
-      storeObj = {
+      const storeObj = {
         weather: weather,
         icon: icon,
         temp: temp,
         uvi: uvi,
       };
+      console.log("this is the storeobj variable:", storeObj);
       //*! Must store value entered by userinput to user storage
-      localStorage.setItem(city + " day-" + i, JSON.stringify(storeObj));
-      //};
+      localStorage.setItem('weather', JSON.stringify(storeObj));
     },
     error: function (xhr, status, error) {
       console.log("status: ", status);
@@ -109,6 +106,8 @@ $("#hide-weather").click(function () {
 });
 // Getting Answers from NPS Park API
 function getAnswer(e, pIndex) {
+  console.log('getAnswer e:', e)
+  console.log('getAnswer pIndex or chosen park:', pIndex)
   e.preventDefault();
   var data = JSON.parse(sessionStorage.getItem(pIndex.toString()));
   var contactP = data.contacts;
@@ -118,7 +117,7 @@ function getAnswer(e, pIndex) {
   // Check if we want keep email info
   if (contactP != null && contactP.emailAddresses.length > 0) {
     email = contactP.emailAddresses[0].emailAddresses;
-  }
+  };
   activity = data.activities[0].name;
   fees = data.entranceFees[0].cost;
   lat = data.latitude;
@@ -128,7 +127,11 @@ function getAnswer(e, pIndex) {
   $("#spanActivity").text("");
   $("#spanFees").text("");
   $("#divInformation").hide();
-}
+  console.log("lat:, Lon:", lat, lon);
+  getFiveDayWeatherApi(lat, lon);
+  console.log("redirect to apiLandingPage");
+  location.href="/parkWeather.html";
+};
 // Fetching Data from NPS API
 function npsApiCall(parkNJ) {
   var npsKey = "aKdQbl5YRDOdOcAzaiDfbacSBby5NQWEU8s5Mi5D";
@@ -146,24 +149,20 @@ function npsApiCall(parkNJ) {
         sessionStorage.removeItem(i.toString());
         sessionStorage.setItem(i.toString(), JSON.stringify(response.data[i]));
         $("#myList").append(
-          "<a class='dropdown-item' href='dataResult.html' onclick='getAnswer(event," +
+          "<button class='dropdown-item' onclick='getAnswer(event," +
           i.toString() +
           ")'>" +
           nameP +
-          "</a>"
+          "</button>"
         );
-
       }
-
     },
-
     error: function (xhr, status, error) {
       console.log("status: ", status);
       console.log("error: ", error);
     },
     complete: function (xhr, status) {
       console.log("complete: ", status);
-
     },
 
   });
