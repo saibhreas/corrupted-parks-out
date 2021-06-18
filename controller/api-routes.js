@@ -2,61 +2,26 @@
 const db = require("../models");
 const passport = require("../config/passport");
 
-module.exports = function(app) {
-  // Using the passport.authenticate middleware with our local strategy.
-  // If the user has valid login credentials, send them to the members page.
-  // Otherwise the user will be sent an error
-  app.post("/api/v1/login", passport.authenticate("local"), async (req, res) => {
-    console.log("POST /api/v1/login");
-    // Testing Post and Favorite using req.user from login
-    console.log("req.user.id", req.user.id);
-    try {
-      const result = await db.Post.create({
-        // Case sensitive for 'UserId' foreign key
-        UserId: req.user.id,
-        title: "This is the title for this post",
-        body: "This is the body of this post"
-      });
-      console.log("result", result.get({ plain:true }));
-
-      const result2 = await db.Favorite.create({
-        // Case sensitive for 'UserId' foreign key
-        UserId: req.user.id,
-        title: "This is the title for this favorite",
-        body: "This is the body of this favorite"
-      });
-      console.log("result2", result2.get({ plain:true }));
-
-      res.json({
-        email: req.user.email,
-        id: req.user.id, 
-        name: req.user.name
-      });
-    } catch (err) {
-      console.log(err);
-      res.status(401).json(err);
-    }
-
-  });
+module.exports = function (app) {
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post("/api/v1/signup", (req, res) => {
-    console.log("POST /api/v1/signup");
+  // app.post("/api/v1/signup", (req, res) => {
+  //   console.log("POST /api/v1/signup");
 
-    db.User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password
-    })
-      .then(() => {
-        res.redirect(307, "/api/login"); // 307: redirect with the same method
-      })
-      .catch(err => {
-        res.status(401).json(err);
-      });
-  });
+  //   db.User.create({
+  //     name: req.body.name,
+  //     email: req.body.email,
+  //     password: req.body.password
+  //   })
+  //     .then(() => {
+  //       res.redirect(307, "/api/login"); // 307: redirect with the same method
+  //     })
+  //     .catch(err => {
+  //       res.status(401).json(err);
+  //     });
+  // });
 
   // Route for logging user out
   app.get("/logout", (req, res) => {
