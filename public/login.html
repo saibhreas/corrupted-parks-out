@@ -8,6 +8,7 @@
   <meta name="Description" content="App that pools up to date data on National Parks in New Jersey" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+
   <link rel="stylesheet" href="./assets/css/scafStyle.css" />
   <title>Park Out</title>
 </head>
@@ -24,7 +25,7 @@
         <div>
           <div class="d-flex justify-content-left align-items-center h-100">
             <div>
-              <a href="index.html">GO Home Here</a>
+              <a id="home" href="index.html">GO Home Here</a>
               <h1 class="mb-3">Park Out</h1>
               <h4 class="mb-3">
                 The place to check out before you head out!
@@ -32,33 +33,37 @@
             </div>
           </div>
         </div>
-        <!----------------------------------------------------->
-        <section id="where2-go" class="container row">
+        <!-------------------------------------------------------------------------------------
+              -->
+        <section id="member-login" class="container row">
           <div class="col-md-4"></div>
           <div class="card col-md-6">
-            <h2>Where would you like to go?</h2>
-            <p>
-              <bold>Park Out</bold> will help you pick the right spot in New
-              Jersey for your walk in the park.
-            </p>
-            <p>
-              Choose from the drop down menu the park you are interseted in.
-            </p>
-            <p>
-              Then choose what information you need, like the current weather,
-              admission information, or if there are activities conducted by
-              the park.
-            </p>
-            <h3><em>Then Take a Hike!</em></h3>
-            <h5 class="card-title">New Jersey's Parks</h5>
-            <p class="card-text">Choose a park from the drop down menu</p>
-            <button type="submit" class="btn btn-secondary ropdown-toggle" id="search-park" onclick="npsApiCall('NJ')"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="get-park-names">
-              Pick a NJ Park
-            </button>
-            <div class="dropdown-menu" id="myList" aria-labelledby="dropdownMenuButton"></div>
+            <h1>Welcom Back<span class="member-name"></span></h1>
+            <form class="login">
+              <h2>Login Form</h2>
+              <form class="login" onsubmit="return false;">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="email-input" placeholder="Email" />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="password-input" placeholder="Password" />
+                </div>
+                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  <span class="sr-only">Error:</span>
+                  <span class="msg"></span>
+                </div>
+
+                <button type="button" id="login" class="btn btn-default">Login</button>
+              </form>
+              <br />
+              <p>Or sign up <a href="signUp.html">here</a></p>
+            </form>
           </div>
         </section>
+
         <!------------------------------------------------------------------------------------------->
       </div>
     </header>
@@ -67,8 +72,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.js"></script>
-  <script src="./js/where2go.js"></script>
+  <script src="./js/login.js"></script>
 </body>
 
 </html>
-<!-- -->
